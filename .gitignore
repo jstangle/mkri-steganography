@@ -1,0 +1,9 @@
+.idea
+*.swp
+*.rdb
+*.pyc
+*CMakeLists.txt
+*/cmake-build-debug/*
+*.sqlite3
+*.sqlite
+
