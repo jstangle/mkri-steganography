@@ -21,10 +21,12 @@ class Crypto(object):
         passphrase = input('Passphrase? ')
         passphrase = md5(passphrase.encode('utf8')).hexdigest()  # helps via MD5 to convert pass on 32 bytes string
 
-        # appends padding for default size
-        plaintext = Padding.appendPadding(plaintext, AES.block_size, mode='CMS')
         # encodes by base64
         plaintext = b64encode(plaintext.encode())
+
+        # appends padding for default size
+        plaintext = Padding.appendPadding(plaintext.decode(), AES.block_size, mode='CMS')
+
         cipher = AES.new(passphrase, AES.MODE_ECB)
 
         return hexlify(cipher.encrypt(plaintext)).decode()
